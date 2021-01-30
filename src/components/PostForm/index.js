@@ -1,5 +1,8 @@
 import { Component } from "react";
 
+import { connect } from "react-redux";
+import { createPost } from "../../redux/actionCreators";
+
 class PostForm extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +14,7 @@ class PostForm extends Component {
 
     const { title } = this.state;
 
-    if (title) {
+    if (title.trim()) {
       const data = {
         id: Date.now(),
         title,
@@ -19,6 +22,8 @@ class PostForm extends Component {
       console.log(data);
 
       this.setState({ ...this.state, title: "" });
+
+      this.props.createPost(data);
     }
   };
 
@@ -54,4 +59,9 @@ class PostForm extends Component {
     );
   }
 }
-export { PostForm };
+
+const mapDispatchToProps = {
+  createPost,
+};
+
+export default connect(null, mapDispatchToProps)(PostForm);

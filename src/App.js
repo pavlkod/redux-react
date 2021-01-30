@@ -1,6 +1,6 @@
 import { FetchedPosts } from "./components/FetchedPosts";
-import { PostForm } from "./components/PostForm";
-import { Posts } from "./components/Posts";
+import PostForm from "./components/PostForm";
+import Posts from "./components/Posts";
 
 function App() {
   return (
