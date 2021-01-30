@@ -1,7 +1,9 @@
-const Post = () => {
+const Post = ({ post }) => {
   return (
-    <div>
-      <h2>Post</h2>
+    <div className="card">
+      <div className="card-body">
+        <div className="card-title">{post.title}</div>
+      </div>
     </div>
   );
 };

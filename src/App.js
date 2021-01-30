@@ -12,9 +12,16 @@ function App() {
       </div>
       <div className="row">
         <div className="col">
-          <Posts />
+          <h2>Синхронные посты</h2>
+          <Posts
+            posts={[
+              { id: 1, title: "first" },
+              { id: 2, title: "second" },
+            ]}
+          />
         </div>
         <div className="col">
+          <h2>Асинхронные посты</h2>
           <FetchedPosts />
         </div>
       </div>
