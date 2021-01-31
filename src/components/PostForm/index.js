@@ -1,6 +1,6 @@
 import { Component } from "react";
-
 import { connect } from "react-redux";
+
 import { createPost } from "../../redux/actionCreators";
 
 class PostForm extends Component {
@@ -19,10 +19,8 @@ class PostForm extends Component {
         id: Date.now(),
         title,
       };
-      console.log(data);
 
       this.setState({ ...this.state, title: "" });
-
       this.props.createPost(data);
     }
   };

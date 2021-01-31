@@ -7,6 +7,7 @@
 
 *.min*
 *.eslintcache*
+.eslintcache
 
 # testing
 /coverage
