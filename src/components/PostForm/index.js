@@ -1,7 +1,8 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 
-import { createPost } from "../../redux/actionCreators";
+import { createPost, showError } from "../../redux/actionCreators";
+import Alert from "../Alert";
 
 class PostForm extends Component {
   constructor(props) {
@@ -14,15 +15,17 @@ class PostForm extends Component {
 
     const { title } = this.state;
 
-    if (title.trim()) {
-      const data = {
-        id: Date.now(),
-        title,
-      };
-
-      this.setState({ ...this.state, title: "" });
-      this.props.createPost(data);
+    if (!title.trim()) {
+      return this.props.showError("Введите название поста", 5000);
     }
+
+    const data = {
+      id: Date.now(),
+      title,
+    };
+
+    this.setState({ ...this.state, title: "" });
+    this.props.createPost(data);
   };
 
   changeInputHandler = e => {
@@ -39,6 +42,7 @@ class PostForm extends Component {
   render() {
     return (
       <form onSubmit={this.submitHandler}>
+        {this.props.error && <Alert message={this.props.error} />}
         <div className="form-group">
           <label htmlFor="title">Заголовок поста</label>
           <input
@@ -58,8 +62,13 @@ class PostForm extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  error: state.app.error,
+});
+
 const mapDispatchToProps = {
   createPost,
+  showError,
 };
 
-export default connect(null, mapDispatchToProps)(PostForm);
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm);

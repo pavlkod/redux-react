@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, showLoader } from "../../redux/actionCreators";
+
 import Loader from "../Loader";
 import { Post } from "../Post";
 
