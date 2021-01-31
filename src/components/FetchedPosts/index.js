@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts, showLoader } from "../../redux/actionCreators";
+import { fetchPosts } from "../../redux/actionCreators";
 
 import Loader from "../Loader";
 import { Post } from "../Post";
@@ -10,7 +10,6 @@ const FetchedPosts = () => {
   const bLoading = useSelector(state => state.app.loading);
 
   const clickHandler = () => {
-    dispatch(showLoader());
     dispatch(fetchPosts());
   };
 
